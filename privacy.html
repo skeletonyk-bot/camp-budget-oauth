@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Camp Budget — Privacy Policy</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; max-width: 720px; margin: 48px auto; padding: 0 24px; color: #222; line-height: 1.55; }
+    h1 { font-size: 28px; margin-bottom: 4px; }
+    h2 { font-size: 18px; margin-top: 28px; }
+    .meta { color: #777; font-size: 13px; margin-bottom: 24px; }
+    code { background: #f4f4f5; padding: 1px 5px; border-radius: 3px; font-size: 13px; }
+    p, li { color: #333; }
+    a { color: #0d6efd; }
+  </style>
+</head>
+<body>
+  <h1>Privacy Policy — Camp Budget</h1>
+  <p class="meta">Last updated: April 26, 2026</p>
+
+  <p>
+    Camp Budget is a personal-use macOS application for tracking the
+    developer/owner's own bank transactions. It has exactly one intended user
+    — the person who installed it. This policy describes what data the
+    application handles and how.
+  </p>
+
+  <h2>Who runs this app</h2>
+  <p>
+    Camp Budget is operated by Dr. Ke Yu as a personal project. Contact:
+    <a href="mailto:skeleton.yk@gmail.com">skeleton.yk@gmail.com</a>.
+  </p>
+
+  <h2>What data is collected</h2>
+  <ul>
+    <li>
+      <strong>Bank transaction data</strong> — account balances, transaction
+      amounts, merchant names, dates, and categorization metadata — fetched
+      from your bank via <a href="https://plaid.com">Plaid</a> using credentials
+      you authorize through Plaid Link.
+    </li>
+    <li>
+      <strong>Plaid access tokens</strong> — opaque strings issued by Plaid that
+      let the application fetch transactions on your behalf.
+    </li>
+    <li>
+      <strong>User-defined labels</strong> — categories, tags, and rules you
+      create within the app to organize your transactions.
+    </li>
+  </ul>
+
+  <h2>Where data is stored</h2>
+  <ul>
+    <li>
+      All transaction and configuration data is stored locally on your Mac in a
+      SwiftData database at
+      <code>~/Library/Application Support/CampBudget/</code>.
+    </li>
+    <li>
+      Plaid access tokens are stored in the macOS Keychain, encrypted by your
+      macOS account password and (on Apple Silicon) the Secure Enclave.
+    </li>
+    <li>
+      No transaction data is uploaded to any server other than Plaid (which is
+      the source of the data, not a destination).
+    </li>
+  </ul>
+
+  <h2>Who data is shared with</h2>
+  <p>
+    Camp Budget shares data only with Plaid, and only as needed to fetch your
+    transactions on your behalf. Plaid's handling of that data is governed by
+    Plaid's own privacy policy, available at
+    <a href="https://plaid.com/legal/">https://plaid.com/legal/</a>. No
+    advertising networks, analytics providers, or other third parties receive
+    data from Camp Budget. The application itself sends no telemetry.
+  </p>
+
+  <h2>How long data is kept</h2>
+  <p>
+    Transaction data is retained locally on your Mac indefinitely until you
+    delete the application's data folder or unlink the relevant Plaid
+    institution. There is no remote data to retain.
+  </p>
+
+  <h2>How to delete your data</h2>
+  <ul>
+    <li>
+      In the app: Settings → Accounts → Unlink an institution. This removes the
+      Plaid access token from your Keychain and stops further fetches.
+    </li>
+    <li>
+      To remove all locally stored transaction data: delete
+      <code>~/Library/Application Support/CampBudget/</code>.
+    </li>
+    <li>
+      To revoke Plaid's continued access to a bank from Plaid's side, visit
+      <a href="https://my.plaid.com">https://my.plaid.com</a>.
+    </li>
+  </ul>
+
+  <h2>Children's privacy</h2>
+  <p>
+    Camp Budget is not intended for use by children under 13 and does not
+    knowingly collect any data from children.
+  </p>
+
+  <h2>Changes to this policy</h2>
+  <p>
+    Updates to this policy will be posted at this URL with a revised "Last
+    updated" date.
+  </p>
+</body>
+</html>
