@@ -3,39 +3,36 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Camp Budget — Linking complete</title>
+  <title>Camp Budget — Returning to app…</title>
   <style>
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      max-width: 480px;
-      margin: 80px auto;
-      padding: 0 24px;
-      color: #222;
-      text-align: center;
-    }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; max-width: 480px; margin: 80px auto; padding: 0 24px; color: #222; text-align: center; }
     h1 { font-size: 22px; font-weight: 600; margin-bottom: 8px; }
     p { color: #555; font-size: 15px; line-height: 1.5; }
-    .check {
-      width: 56px; height: 56px;
-      border-radius: 50%;
-      background: #28a745;
-      color: white;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 30px;
-      margin-bottom: 16px;
-    }
+    a { color: #0d6efd; }
+    .check { width: 56px; height: 56px; border-radius: 50%; background: #28a745; color: white; display: inline-flex; align-items: center; justify-content: center; font-size: 30px; margin-bottom: 16px; }
+    #manual { display: none; margin-top: 24px; padding: 12px; background: #f4f4f5; border-radius: 8px; font-size: 14px; }
   </style>
 </head>
 <body>
   <div class="check">&#10003;</div>
   <h1>Linking complete</h1>
-  <p>You can close this tab and return to Camp Budget.</p>
-  <p style="font-size: 12px; color: #999; margin-top: 32px;">
-    This page exists only as a registered Plaid OAuth redirect target.
-    Camp Budget intercepts the redirect inside its embedded browser
-    before this page actually loads.
-  </p>
+  <p>Returning you to Camp Budget…</p>
+  <div id="manual">
+    <p>If Camp Budget didn't open automatically, you can <a id="link" href="#">click here to return to the app</a>.</p>
+  </div>
+
+  <script>
+    // Forward all OAuth query params to the campbudget:// custom URL scheme
+    // so the macOS app can pick up where it left off.
+    var query = window.location.search || '';
+    var deepLink = 'campbudget://oauth-callback' + query;
+    document.getElementById('link').href = deepLink;
+    window.location.replace(deepLink);
+    // If the scheme isn't registered (or user is in a regular browser session),
+    // surface the manual link after a brief delay.
+    setTimeout(function () {
+      document.getElementById('manual').style.display = 'block';
+    }, 1500);
+  </script>
 </body>
 </html>
