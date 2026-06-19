@@ -16,13 +16,16 @@
 </head>
 <body>
   <h1>Privacy Policy — Camp Budget</h1>
-  <p class="meta">Last updated: April 26, 2026</p>
+  <p class="meta">Last updated: June 18, 2026</p>
 
   <p>
-    Camp Budget is a personal-use macOS application for tracking the
-    developer/owner's own bank transactions. It has exactly one intended user
-    — the person who installed it. This policy describes what data the
-    application handles and how.
+    Camp Budget is a personal spending and budgeting app for macOS and iOS,
+    operated by Dr. Ke Yu. It connects to your bank and credit-card accounts
+    through <a href="https://plaid.com">Plaid</a> to import your balances and
+    transactions, and uses a cloud backend to store and process that data so it
+    stays in sync across your devices. This policy describes what data the
+    service handles, where it is stored, who it is shared with, and how you can
+    delete it.
   </p>
 
   <h2>Who runs this app</h2>
@@ -34,68 +37,114 @@
   <h2>What data is collected</h2>
   <ul>
     <li>
-      <strong>Bank transaction data</strong> — account balances, transaction
-      amounts, merchant names, dates, and categorization metadata — fetched
-      from your bank via <a href="https://plaid.com">Plaid</a> using credentials
-      you authorize through Plaid Link.
+      <strong>Account data</strong> — for each linked account: the institution
+      name, account name, the masked account number (last digits only), account
+      type, and current and available balances.
     </li>
     <li>
-      <strong>Plaid access tokens</strong> — opaque strings issued by Plaid that
-      let the application fetch transactions on your behalf.
+      <strong>Transaction data</strong> — amount, date, merchant name, the
+      original bank description, Plaid's category for the transaction, and the
+      enrichment details Plaid provides (such as location, payment channel,
+      counterparties, and currency).
     </li>
     <li>
-      <strong>User-defined labels</strong> — categories, tags, and rules you
-      create within the app to organize your transactions.
+      <strong>Plaid access tokens</strong> — opaque credentials issued by Plaid
+      that allow the backend to fetch your balances and transactions on your
+      behalf.
+    </li>
+    <li>
+      <strong>Account &amp; sign-in identity</strong> — you sign in with a
+      Camp Budget account managed by Firebase Authentication (for example, an
+      email address), which identifies your data.
+    </li>
+    <li>
+      <strong>Data you create in the app</strong> — categories, tags, rules,
+      budgets, and category overrides you set up to organize your transactions.
     </li>
   </ul>
 
-  <h2>Where data is stored</h2>
+  <h2>Where data is stored and processed</h2>
+  <p>
+    Camp Budget uses a cloud backend built on Google Cloud Platform / Firebase.
+    Your data is <strong>not</strong> kept only on your device — it is stored in
+    the cloud so it can sync across your Mac and iPhone:
+  </p>
   <ul>
     <li>
-      All transaction and configuration data is stored locally on your Mac in a
-      SwiftData database at
-      <code>~/Library/Application Support/CampBudget/</code>.
+      Your balances, transactions, and the data you create are stored in a
+      <strong>Google Cloud Firestore</strong> database, under records keyed to
+      your own account
+      (<code>users/&lt;your-account-id&gt;/…</code>).
     </li>
     <li>
-      Plaid access tokens are stored in the macOS Keychain, encrypted by your
-      macOS account password and (on Apple Silicon) the Secure Enclave.
+      Linking, token exchange, and transaction syncing are performed by
+      <strong>Firebase Cloud Functions</strong> that communicate with Plaid on
+      your behalf. The Plaid API credentials used by those functions are held in
+      Google Secret Manager.
     </li>
     <li>
-      No transaction data is uploaded to any server other than Plaid (which is
-      the source of the data, not a destination).
+      Your <strong>Plaid access tokens</strong> are stored in a server-only area
+      of the database that the Camp Budget apps cannot read; only the backend
+      functions can use them. Database security rules restrict every signed-in
+      user to their own data and deny client access to the stored tokens.
+    </li>
+    <li>
+      All communication between the apps and the backend uses encrypted HTTPS
+      connections.
     </li>
   </ul>
 
   <h2>Who data is shared with</h2>
   <p>
-    Camp Budget shares data only with Plaid, and only as needed to fetch your
-    transactions on your behalf. Plaid's handling of that data is governed by
-    Plaid's own privacy policy, available at
-    <a href="https://plaid.com/legal/">https://plaid.com/legal/</a>. No
-    advertising networks, analytics providers, or other third parties receive
-    data from Camp Budget. The application itself sends no telemetry.
+    Camp Budget relies on the following service providers (sub-processors) to
+    operate, and shares data with them only as needed to provide the service:
+  </p>
+  <ul>
+    <li>
+      <strong>Plaid</strong> — connects to your financial institution and
+      supplies your balances and transactions. Plaid's handling of that data is
+      governed by Plaid's own privacy policy at
+      <a href="https://plaid.com/legal/">https://plaid.com/legal/</a>.
+    </li>
+    <li>
+      <strong>Google Cloud Platform / Firebase</strong> — provides the
+      authentication, database (Firestore), serverless functions, and secret
+      storage that host and process your data.
+    </li>
+  </ul>
+  <p>
+    No advertising networks, data brokers, or analytics third parties receive
+    your data. <strong>Your financial data is never sold or shared for
+    advertising.</strong>
   </p>
 
   <h2>How long data is kept</h2>
   <p>
-    Transaction data is retained locally on your Mac indefinitely until you
-    delete the application's data folder or unlink the relevant Plaid
-    institution. There is no remote data to retain.
+    Your account and transaction data is retained in the cloud database until
+    you unlink the institution or request deletion (see below). If you stop
+    using the app without unlinking, your data remains stored until you delete
+    it or ask us to.
   </p>
 
   <h2>How to delete your data</h2>
   <ul>
     <li>
-      In the app: Settings → Accounts → Unlink an institution. This removes the
-      Plaid access token from your Keychain and stops further fetches.
+      <strong>Unlink an institution</strong> — in the app, go to Settings and
+      unlink a linked institution. This deletes that institution's accounts and
+      transactions from the cloud database and stops further syncing.
     </li>
     <li>
-      To remove all locally stored transaction data: delete
-      <code>~/Library/Application Support/CampBudget/</code>.
+      <strong>Revoke Plaid's access to your bank</strong> — to cut off Plaid's
+      ongoing access to a financial institution, visit Plaid's user portal at
+      <a href="https://my.plaid.com">https://my.plaid.com</a>. Note that
+      unlinking inside Camp Budget removes the data from the app but does not by
+      itself revoke Plaid's connection at the bank.
     </li>
     <li>
-      To revoke Plaid's continued access to a bank from Plaid's side, visit
-      <a href="https://my.plaid.com">https://my.plaid.com</a>.
+      <strong>Delete everything</strong> — to have all remaining data associated
+      with your account deleted, including any stored Plaid access tokens, email
+      <a href="mailto:skeleton.yk@gmail.com">skeleton.yk@gmail.com</a> and it
+      will be removed from the backend.
     </li>
   </ul>
 
