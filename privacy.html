@@ -3,224 +3,180 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Camp Budget — Privacy Policy</title>
+  <title>Privacy Policy — Camp Budget</title>
+  <meta name="description" content="How Camp Budget collects, uses, stores, shares, and lets you delete your information." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; max-width: 720px; margin: 48px auto; padding: 0 24px; color: #222; line-height: 1.55; }
-    h1 { font-size: 28px; margin-bottom: 4px; }
-    h2 { font-size: 18px; margin-top: 28px; }
-    .meta { color: #777; font-size: 13px; margin-bottom: 24px; }
-    code { background: #f4f4f5; padding: 1px 5px; border-radius: 3px; font-size: 13px; }
-    p, li { color: #333; }
-    a { color: #0d6efd; }
+    :root{
+      --ink:#143a3e; --teal:#0a4a51; --teal-2:#0e5a60; --mint:#3fbfa8; --mint-deep:#2e8c80;
+      --cream:#fbf7ef; --paper:#fffdf8; --ember:#dd8a39; --muted:#5e716e; --line:rgba(20,58,62,.12);
+      --serif:"Fraunces",Georgia,serif; --sans:"Hanken Grotesk",-apple-system,BlinkMacSystemFont,sans-serif;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:var(--sans); color:var(--ink); background:var(--cream); line-height:1.68;
+      -webkit-font-smoothing:antialiased;
+      background-image:radial-gradient(55% 40% at 85% -8%, rgba(63,191,168,.18), transparent 60%);
+      background-repeat:no-repeat;
+    }
+    .wrap{max-width:760px;margin:0 auto;padding:0 28px}
+    a{color:var(--teal-2)}
+    a:hover{text-decoration:underline}
+
+    header.bar{padding:26px 0}
+    header.bar .wrap{max-width:1020px;display:flex;align-items:center;justify-content:space-between}
+    .brand{display:flex;align-items:center;gap:12px;font-family:var(--serif);font-weight:600;font-size:20px;letter-spacing:-.01em;color:var(--ink);text-decoration:none}
+    .brand .logo{width:34px;height:34px;border-radius:9px;box-shadow:0 4px 12px rgba(10,74,81,.22)}
+    header.bar nav a{color:var(--ink);font-weight:500;font-size:15px}
+
+    .title{padding:30px 0 8px}
+    .kicker{font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--mint-deep)}
+    h1{font-family:var(--serif);font-weight:600;font-size:clamp(34px,5.4vw,50px);letter-spacing:-.02em;margin:10px 0 6px}
+    .updated{color:var(--muted);font-size:14.5px}
+    .intro{font-size:17px;color:#3c4f4d;margin:18px 0 8px}
+
+    .tldr{background:linear-gradient(160deg,var(--teal),var(--teal-2));color:#dff5ef;border-radius:22px;
+      padding:30px 32px;margin:26px 0 14px;box-shadow:0 18px 42px rgba(10,74,81,.22)}
+    .tldr h2{font-family:var(--serif);font-weight:600;font-size:21px;color:#fff;margin-bottom:14px}
+    .tldr ul{list-style:none;display:flex;flex-direction:column;gap:11px}
+    .tldr li{position:relative;padding-left:28px;font-size:15.5px;color:#e4f6f1}
+    .tldr li::before{content:"";position:absolute;left:0;top:8px;width:14px;height:14px;border-radius:50%;
+      background:var(--mint);box-shadow:0 0 0 4px rgba(63,191,168,.22)}
+
+    section.doc{padding:18px 0 10px}
+    .item{padding:24px 0;border-top:1px solid var(--line)}
+    .item:first-child{border-top:none}
+    .item h2{font-family:var(--serif);font-weight:600;font-size:23px;letter-spacing:-.01em;margin-bottom:12px;display:flex;align-items:baseline;gap:12px}
+    .item h2 .n{font-size:15px;font-weight:600;color:var(--mint-deep);font-family:var(--sans);min-width:24px}
+    .item p{margin-bottom:12px}
+    .item p:last-child{margin-bottom:0}
+    .item ul{margin:6px 0 12px;padding-left:0;list-style:none}
+    .item ul li{position:relative;padding-left:22px;margin-bottom:9px}
+    .item ul li::before{content:"";position:absolute;left:4px;top:11px;width:6px;height:6px;border-radius:50%;background:var(--mint-deep)}
+    .item strong{color:var(--ink)}
+
+    footer{border-top:1px solid var(--line);padding:30px 0 56px;margin-top:18px}
+    footer .wrap{max-width:1020px;display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;align-items:center}
+    footer p{font-size:14px;color:var(--muted)}
+    footer nav a{font-size:14px}
   </style>
 </head>
 <body>
-  <h1>Privacy Policy — Camp Budget</h1>
-  <p class="meta">Last updated: June 18, 2026</p>
+  <header class="bar">
+    <div class="wrap">
+      <a class="brand" href="index.html">
+        <svg class="logo" viewBox="0 0 120 120" aria-hidden="true"><defs><linearGradient id="lg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0a4a51"/><stop offset="1" stop-color="#3fbfa8"/></linearGradient><clipPath id="lc"><rect width="120" height="120" rx="27"/></clipPath></defs><g clip-path="url(#lc)"><rect width="120" height="120" fill="url(#lg)"/><circle cx="60" cy="60" r="36" fill="none" stroke="#fff" stroke-opacity=".12" stroke-width="4.6"/><path d="M60 26.4 L96 91.2 L24 91.2 Z" fill="#fff"/><path d="M60 60 L70.2 91.2 L49.8 91.2 Z" fill="#2e8c80"/><text x="60" y="61" text-anchor="middle" dominant-baseline="central" font-family="Georgia,serif" font-weight="700" font-size="34" fill="#0a4a51">$</text></g></svg>
+        Camp Budget
+      </a>
+      <nav><a href="index.html">← Home</a></nav>
+    </div>
+  </header>
 
-  <p>
-    Camp Budget is a personal spending and budgeting app for macOS and iOS,
-    operated by Dr. Ke Yu. It connects to your bank and credit-card accounts
-    through <a href="https://plaid.com">Plaid</a> to import your balances and
-    transactions, stores that data in a secure cloud backend so it stays in sync
-    across your devices, and uses AI to categorize, name, and analyze your
-    spending. This policy describes what data the service handles, where it is
-    stored, who it is shared with, and how you can delete it.
-  </p>
+  <main class="wrap">
+    <div class="title">
+      <div class="kicker">Privacy Policy</div>
+      <h1>Your data, in plain terms</h1>
+      <div class="updated">Last updated June 18, 2026</div>
+      <p class="intro">Camp Budget is a personal budgeting app for Mac and iPhone. It connects to your bank and credit-card accounts to import your balances and transactions, then helps you organize, budget, and understand your spending. This page explains what information the app handles and the choices you have.</p>
+    </div>
 
-  <h2>Who runs this app</h2>
-  <p>
-    Camp Budget is operated by Dr. Ke Yu as a personal project. Contact:
-    <a href="mailto:skeleton.yk@gmail.com">skeleton.yk@gmail.com</a>.
-  </p>
+    <div class="tldr">
+      <h2>The short version</h2>
+      <ul>
+        <li>We read your account balances and transactions (through Plaid) so the app can organize and analyze your spending.</li>
+        <li>Your information is stored securely in the cloud, on Google’s Firebase platform, so it stays in sync across your devices.</li>
+        <li>Some features use Google’s AI to categorize, summarize, and answer questions — to do that, your transaction details (and a receipt photo, if you add one) are sent to Google.</li>
+        <li>We never sell your information or use it for advertising.</li>
+        <li>You can unlink an account or delete your data at any time.</li>
+      </ul>
+    </div>
 
-  <h2>What data is collected</h2>
-  <ul>
-    <li>
-      <strong>Account data</strong> — for each linked account: the institution
-      name, account name, the masked account number (last digits only), account
-      type (checking, savings, credit, other), and current and available
-      balances.
-    </li>
-    <li>
-      <strong>Transaction data</strong> — for each transaction: amount, date,
-      authorized/posted date, merchant name, the original bank description, and
-      Plaid's spending category. Camp Budget also stores the additional detail
-      Plaid provides about a transaction, including the <strong>city and
-      state/region</strong> where it occurred, the payment channel (in store,
-      online, etc.), counterparties (the underlying merchant, marketplace, or
-      app), payment and transfer details (such as check number or payee/payer on
-      transfers), the <strong>time of day</strong>, and the currency if it is
-      not US dollars.
-    </li>
-    <li>
-      <strong>Recurring streams</strong> — recurring charges and income that
-      Plaid identifies (merchant, typical amount, and frequency), used to
-      surface your subscriptions.
-    </li>
-    <li>
-      <strong>Plaid access tokens</strong> — opaque credentials issued by Plaid
-      that allow the backend to fetch your balances and transactions on your
-      behalf.
-    </li>
-    <li>
-      <strong>Sign-in identity</strong> — you create an account with an
-      <strong>email address and password</strong>, managed by Firebase
-      Authentication, which identifies and secures your data.
-    </li>
-    <li>
-      <strong>Data you create in the app</strong> — categories, tags, rules,
-      budgets, saved views/searches, and category overrides you set up to
-      organize your transactions.
-    </li>
-    <li>
-      <strong>Receipt images (only if you use this feature)</strong> — if you
-      attach a photo of a receipt to a transaction, that image is processed to
-      read its details (see "AI features" below).
-    </li>
-  </ul>
+    <section class="doc">
+      <div class="item">
+        <h2><span class="n">1</span> Who runs Camp Budget</h2>
+        <p>Camp Budget is an independent app operated by Dr. Ke Yu. If you have any questions about your privacy, email <a href="mailto:skeleton.yk@gmail.com">skeleton.yk@gmail.com</a>.</p>
+      </div>
 
-  <h2>Where data is stored and processed</h2>
-  <p>
-    Camp Budget uses a cloud backend built on Google Cloud Platform / Firebase,
-    hosted in the United States. Your data is <strong>not</strong> kept only on
-    your device — it is stored in the cloud so it can sync across your Mac and
-    iPhone:
-  </p>
-  <ul>
-    <li>
-      Your balances, transactions, and the data you create are stored in a
-      <strong>Google Cloud Firestore</strong> database, under records keyed to
-      your own account
-      (<code>users/&lt;your-account-id&gt;/…</code>).
-    </li>
-    <li>
-      Linking, token exchange, and transaction syncing are performed by
-      <strong>Firebase Cloud Functions</strong> that communicate with Plaid on
-      your behalf. The Plaid API credentials used by those functions are held in
-      Google Secret Manager.
-    </li>
-    <li>
-      Your <strong>Plaid access tokens</strong> are stored in a server-only area
-      of the database that the Camp Budget apps cannot read; only the backend
-      functions can use them. Database security rules restrict every signed-in
-      user to their own data and deny client access to the stored tokens.
-    </li>
-    <li>
-      All communication between the apps and the backend uses encrypted HTTPS
-      connections.
-    </li>
-  </ul>
+      <div class="item">
+        <h2><span class="n">2</span> What information we collect</h2>
+        <ul>
+          <li><strong>Your accounts</strong> — the bank or card name, the account name, the last few digits of the account number, the account type, and your current and available balances.</li>
+          <li><strong>Your transactions</strong> — the amount, date, merchant, and the original description, along with the category and the extra details your bank provides, such as the city and time of a purchase.</li>
+          <li><strong>Recurring charges</strong> — subscriptions and regular payments the app identifies for you.</li>
+          <li><strong>Things you create</strong> — the categories, tags, rules, budgets, and saved searches you set up in the app.</li>
+          <li><strong>Your sign-in</strong> — you create an account with an email address and password so your data is private to you.</li>
+          <li><strong>Receipt photos</strong> — only if you choose to add a photo of a receipt to a transaction.</li>
+        </ul>
+      </div>
 
-  <h2>AI features and how your data is used by them</h2>
-  <p>
-    Camp Budget uses Google's <strong>Gemini</strong> models, accessed through
-    Firebase AI, to power its smart features. To generate a result, the relevant
-    data is sent to Google's Gemini API. Specifically:
-  </p>
-  <ul>
-    <li>
-      <strong>Automatic naming and categorization</strong> — merchant names,
-      descriptions, and Plaid categories are sent to Gemini to produce clean
-      transaction names and suggested categories. Naming runs automatically when
-      your transactions load or refresh.
-    </li>
-    <li>
-      <strong>Insights, forecasts, anomaly and subscription detection</strong> —
-      your transactions and category spending totals are sent to Gemini to
-      generate monthly insights, end-of-month forecasts, unusual-activity
-      flags, and a list of recurring subscriptions.
-    </li>
-    <li>
-      <strong>"Ask" assistant and budget suggestions</strong> — when you ask a
-      natural-language question or request budget suggestions, your question and
-      the matching transactions or spending totals are sent to Gemini to write
-      the answer.
-    </li>
-    <li>
-      <strong>Receipt scanning</strong> — if you attach a receipt image, the
-      image is sent to Gemini to extract the merchant, amount, and date.
-    </li>
-  </ul>
-  <p>
-    Google's processing of data sent to Gemini is governed by Google's terms,
-    available at
-    <a href="https://policies.google.com/privacy">https://policies.google.com/privacy</a>.
-  </p>
+      <div class="item">
+        <h2><span class="n">3</span> How we use your information</h2>
+        <p>We use your information only to run the app for you: importing and updating your transactions, sorting them into categories, tracking your budgets, and showing trends, summaries, and answers. We don’t use it for any unrelated purpose.</p>
+      </div>
 
-  <h2>Who data is shared with</h2>
-  <p>
-    Camp Budget relies on the following service providers (sub-processors) to
-    operate, and shares data with them only as needed to provide the service:
-  </p>
-  <ul>
-    <li>
-      <strong>Plaid</strong> — connects to your financial institution and
-      supplies your balances and transactions. Plaid's handling of that data is
-      governed by Plaid's own privacy policy at
-      <a href="https://plaid.com/legal/">https://plaid.com/legal/</a>.
-    </li>
-    <li>
-      <strong>Google Cloud Platform / Firebase</strong> — provides the
-      authentication, database (Firestore), serverless functions, and secret
-      storage that host your data, and the <strong>Gemini</strong> AI models
-      that power the features described above.
-    </li>
-  </ul>
-  <p>
-    No advertising networks, data brokers, or analytics third parties receive
-    your data, and the app includes no third-party analytics or tracking SDKs.
-    <strong>Your financial data is never sold or shared for advertising.</strong>
-  </p>
+      <div class="item">
+        <h2><span class="n">4</span> AI features</h2>
+        <p>Several features are powered by Google’s Gemini AI: automatic naming and categories, monthly insights and forecasts, finding unusual charges and subscriptions, the “Ask” assistant, budget suggestions, and reading receipt photos. When these features run, the relevant transaction details — and the receipt image, if you scan one — are sent to Google to produce the result. Google’s handling of that data is described in <a href="https://policies.google.com/privacy">Google’s Privacy Policy</a>.</p>
+      </div>
 
-  <h2>How long data is kept</h2>
-  <p>
-    Your account and transaction data is retained in the cloud database until
-    you unlink the institution or request deletion (see below). If you stop
-    using the app without unlinking, your data remains stored until you delete
-    it or ask us to.
-  </p>
+      <div class="item">
+        <h2><span class="n">5</span> Who we share information with</h2>
+        <p>We share your information only with the services that make the app work, and only as needed:</p>
+        <ul>
+          <li><strong>Plaid</strong> connects to your bank and provides your balances and transactions. See <a href="https://plaid.com/legal/">Plaid’s privacy policy</a>.</li>
+          <li><strong>Google (Firebase &amp; Gemini)</strong> securely stores your data and powers the AI features above. See <a href="https://policies.google.com/privacy">Google’s privacy policy</a>.</li>
+        </ul>
+        <p>We do not share your information with advertisers, data brokers, or analytics trackers, and the app contains no third-party tracking tools. <strong>Your financial data is never sold or used for advertising.</strong></p>
+      </div>
 
-  <h2>How to delete your data</h2>
-  <ul>
-    <li>
-      <strong>Unlink an institution</strong> — in the app, go to Settings and
-      unlink a linked institution. This deletes that institution's accounts and
-      transactions from the cloud database and stops further syncing.
-    </li>
-    <li>
-      <strong>Revoke Plaid's access to your bank</strong> — to cut off Plaid's
-      ongoing access to a financial institution, visit Plaid's user portal at
-      <a href="https://my.plaid.com">https://my.plaid.com</a>. Note that
-      unlinking inside Camp Budget removes the data from the app but does not by
-      itself revoke Plaid's connection at the bank.
-    </li>
-    <li>
-      <strong>Delete everything</strong> — to have all remaining data associated
-      with your account deleted, including any stored Plaid access tokens, email
-      <a href="mailto:skeleton.yk@gmail.com">skeleton.yk@gmail.com</a> and it
-      will be removed from the backend.
-    </li>
-  </ul>
+      <div class="item">
+        <h2><span class="n">6</span> How your data is kept safe</h2>
+        <ul>
+          <li>All information travels between the app and our servers over encrypted (HTTPS) connections.</li>
+          <li>Your data is tied to your account, and only you can access it.</li>
+          <li>The secure keys that let the app fetch data from your bank are kept on our server and are never stored on your device or shown in the app.</li>
+        </ul>
+      </div>
 
-  <h2>Security</h2>
-  <ul>
-    <li>Access tokens are stored server-side and are never exposed to the apps.</li>
-    <li>Database rules isolate each user to their own data.</li>
-    <li>Plaid API credentials are held in Google Secret Manager.</li>
-    <li>All traffic between the apps and the backend is encrypted over HTTPS.</li>
-  </ul>
+      <div class="item">
+        <h2><span class="n">7</span> How long we keep it</h2>
+        <p>We keep your information for as long as you use the app. If you unlink an account or ask us to delete your data, it’s removed as described below. If you stop using the app without unlinking, your data stays stored until you delete it or ask us to.</p>
+      </div>
 
-  <h2>Children's privacy</h2>
-  <p>
-    Camp Budget is not intended for use by children under 13 and does not
-    knowingly collect any data from children.
-  </p>
+      <div class="item">
+        <h2><span class="n">8</span> How to delete your data</h2>
+        <ul>
+          <li><strong>Unlink an account</strong> — in the app’s Settings, unlink an institution. This removes that account’s transactions and balances and stops further updates.</li>
+          <li><strong>Cut off bank access</strong> — to fully end a connection at your bank, visit Plaid’s portal at <a href="https://my.plaid.com">my.plaid.com</a>. (Unlinking in the app removes the data but doesn’t end the bank connection on its own.)</li>
+          <li><strong>Delete everything</strong> — email <a href="mailto:skeleton.yk@gmail.com">skeleton.yk@gmail.com</a> and we’ll delete all remaining data tied to your account, including the stored access keys.</li>
+        </ul>
+      </div>
 
-  <h2>Changes to this policy</h2>
-  <p>
-    Updates to this policy will be posted at this URL with a revised "Last
-    updated" date.
-  </p>
+      <div class="item">
+        <h2><span class="n">9</span> Children’s privacy</h2>
+        <p>Camp Budget is not intended for children under 13, and we don’t knowingly collect information from children.</p>
+      </div>
+
+      <div class="item">
+        <h2><span class="n">10</span> Changes to this policy</h2>
+        <p>If we update this policy, we’ll post the new version on this page and update the “Last updated” date above.</p>
+      </div>
+
+      <div class="item">
+        <h2><span class="n">11</span> Contact</h2>
+        <p>Questions or requests? Email <a href="mailto:skeleton.yk@gmail.com">skeleton.yk@gmail.com</a> and we’ll be glad to help.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p>Camp Budget is an independent app by Dr. Ke Yu. · <a href="mailto:skeleton.yk@gmail.com">skeleton.yk@gmail.com</a></p>
+      <nav><a href="index.html">Home</a></nav>
+    </div>
+  </footer>
 </body>
 </html>
