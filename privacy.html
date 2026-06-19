@@ -22,10 +22,10 @@
     Camp Budget is a personal spending and budgeting app for macOS and iOS,
     operated by Dr. Ke Yu. It connects to your bank and credit-card accounts
     through <a href="https://plaid.com">Plaid</a> to import your balances and
-    transactions, and uses a cloud backend to store and process that data so it
-    stays in sync across your devices. This policy describes what data the
-    service handles, where it is stored, who it is shared with, and how you can
-    delete it.
+    transactions, stores that data in a secure cloud backend so it stays in sync
+    across your devices, and uses AI to categorize, name, and analyze your
+    spending. This policy describes what data the service handles, where it is
+    stored, who it is shared with, and how you can delete it.
   </p>
 
   <h2>Who runs this app</h2>
@@ -39,13 +39,24 @@
     <li>
       <strong>Account data</strong> — for each linked account: the institution
       name, account name, the masked account number (last digits only), account
-      type, and current and available balances.
+      type (checking, savings, credit, other), and current and available
+      balances.
     </li>
     <li>
-      <strong>Transaction data</strong> — amount, date, merchant name, the
-      original bank description, Plaid's category for the transaction, and the
-      enrichment details Plaid provides (such as location, payment channel,
-      counterparties, and currency).
+      <strong>Transaction data</strong> — for each transaction: amount, date,
+      authorized/posted date, merchant name, the original bank description, and
+      Plaid's spending category. Camp Budget also stores the additional detail
+      Plaid provides about a transaction, including the <strong>city and
+      state/region</strong> where it occurred, the payment channel (in store,
+      online, etc.), counterparties (the underlying merchant, marketplace, or
+      app), payment and transfer details (such as check number or payee/payer on
+      transfers), the <strong>time of day</strong>, and the currency if it is
+      not US dollars.
+    </li>
+    <li>
+      <strong>Recurring streams</strong> — recurring charges and income that
+      Plaid identifies (merchant, typical amount, and frequency), used to
+      surface your subscriptions.
     </li>
     <li>
       <strong>Plaid access tokens</strong> — opaque credentials issued by Plaid
@@ -53,21 +64,28 @@
       behalf.
     </li>
     <li>
-      <strong>Account &amp; sign-in identity</strong> — you sign in with a
-      Camp Budget account managed by Firebase Authentication (for example, an
-      email address), which identifies your data.
+      <strong>Sign-in identity</strong> — you create an account with an
+      <strong>email address and password</strong>, managed by Firebase
+      Authentication, which identifies and secures your data.
     </li>
     <li>
       <strong>Data you create in the app</strong> — categories, tags, rules,
-      budgets, and category overrides you set up to organize your transactions.
+      budgets, saved views/searches, and category overrides you set up to
+      organize your transactions.
+    </li>
+    <li>
+      <strong>Receipt images (only if you use this feature)</strong> — if you
+      attach a photo of a receipt to a transaction, that image is processed to
+      read its details (see "AI features" below).
     </li>
   </ul>
 
   <h2>Where data is stored and processed</h2>
   <p>
-    Camp Budget uses a cloud backend built on Google Cloud Platform / Firebase.
-    Your data is <strong>not</strong> kept only on your device — it is stored in
-    the cloud so it can sync across your Mac and iPhone:
+    Camp Budget uses a cloud backend built on Google Cloud Platform / Firebase,
+    hosted in the United States. Your data is <strong>not</strong> kept only on
+    your device — it is stored in the cloud so it can sync across your Mac and
+    iPhone:
   </p>
   <ul>
     <li>
@@ -94,6 +112,42 @@
     </li>
   </ul>
 
+  <h2>AI features and how your data is used by them</h2>
+  <p>
+    Camp Budget uses Google's <strong>Gemini</strong> models, accessed through
+    Firebase AI, to power its smart features. To generate a result, the relevant
+    data is sent to Google's Gemini API. Specifically:
+  </p>
+  <ul>
+    <li>
+      <strong>Automatic naming and categorization</strong> — merchant names,
+      descriptions, and Plaid categories are sent to Gemini to produce clean
+      transaction names and suggested categories. Naming runs automatically when
+      your transactions load or refresh.
+    </li>
+    <li>
+      <strong>Insights, forecasts, anomaly and subscription detection</strong> —
+      your transactions and category spending totals are sent to Gemini to
+      generate monthly insights, end-of-month forecasts, unusual-activity
+      flags, and a list of recurring subscriptions.
+    </li>
+    <li>
+      <strong>"Ask" assistant and budget suggestions</strong> — when you ask a
+      natural-language question or request budget suggestions, your question and
+      the matching transactions or spending totals are sent to Gemini to write
+      the answer.
+    </li>
+    <li>
+      <strong>Receipt scanning</strong> — if you attach a receipt image, the
+      image is sent to Gemini to extract the merchant, amount, and date.
+    </li>
+  </ul>
+  <p>
+    Google's processing of data sent to Gemini is governed by Google's terms,
+    available at
+    <a href="https://policies.google.com/privacy">https://policies.google.com/privacy</a>.
+  </p>
+
   <h2>Who data is shared with</h2>
   <p>
     Camp Budget relies on the following service providers (sub-processors) to
@@ -109,13 +163,14 @@
     <li>
       <strong>Google Cloud Platform / Firebase</strong> — provides the
       authentication, database (Firestore), serverless functions, and secret
-      storage that host and process your data.
+      storage that host your data, and the <strong>Gemini</strong> AI models
+      that power the features described above.
     </li>
   </ul>
   <p>
     No advertising networks, data brokers, or analytics third parties receive
-    your data. <strong>Your financial data is never sold or shared for
-    advertising.</strong>
+    your data, and the app includes no third-party analytics or tracking SDKs.
+    <strong>Your financial data is never sold or shared for advertising.</strong>
   </p>
 
   <h2>How long data is kept</h2>
@@ -146,6 +201,14 @@
       <a href="mailto:skeleton.yk@gmail.com">skeleton.yk@gmail.com</a> and it
       will be removed from the backend.
     </li>
+  </ul>
+
+  <h2>Security</h2>
+  <ul>
+    <li>Access tokens are stored server-side and are never exposed to the apps.</li>
+    <li>Database rules isolate each user to their own data.</li>
+    <li>Plaid API credentials are held in Google Secret Manager.</li>
+    <li>All traffic between the apps and the backend is encrypted over HTTPS.</li>
   </ul>
 
   <h2>Children's privacy</h2>

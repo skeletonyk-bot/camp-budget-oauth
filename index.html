@@ -10,8 +10,10 @@
     .tagline { color: #555; font-size: 17px; margin-top: 0; margin-bottom: 28px; }
     h2 { font-size: 18px; margin-top: 32px; }
     ul { padding-left: 20px; }
+    li { margin-bottom: 6px; }
     p, li { color: #333; }
     a { color: #0d6efd; }
+    .platforms { color: #777; font-size: 14px; margin-top: 8px; }
     .footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; color: #777; font-size: 13px; }
   </style>
 </head>
@@ -22,21 +24,31 @@
   <p>
     Camp Budget connects securely to your bank and credit-card accounts through
     <a href="https://plaid.com">Plaid</a> to import your transactions and
-    balances, then helps you understand and plan your spending.
+    balances, keeps them in sync across your devices, and uses AI to help you
+    understand and plan your spending.
   </p>
 
   <h2>What it does</h2>
   <ul>
-    <li>Automatically imports and categorizes your transactions</li>
-    <li>Tracks budgets and shows spending trends over time</li>
-    <li>Surfaces insights, recurring charges, and anomalies</li>
+    <li><strong>Automatic import</strong> — pulls in transactions and balances from your linked accounts and keeps them up to date.</li>
+    <li><strong>Smart categorization &amp; naming</strong> — cleans up cryptic transaction descriptions and sorts spending into categories automatically.</li>
+    <li><strong>Budgets</strong> — set per-category budgets, with AI-suggested targets based on your spending.</li>
+    <li><strong>Trends &amp; insights</strong> — see spending over time, monthly insights, and end-of-month forecasts.</li>
+    <li><strong>Anomaly &amp; subscription detection</strong> — flags unusual charges and surfaces recurring subscriptions, including the irregular ones.</li>
+    <li><strong>Ask</strong> — a natural-language assistant: ask questions like "how much did I spend on groceries last month?" and get an answer.</li>
+    <li><strong>Receipt scanning</strong> — attach a photo of a receipt and have its details read automatically.</li>
+    <li><strong>Organize your way</strong> — tags, rules, and saved views to tailor how transactions are grouped.</li>
   </ul>
+  <p class="platforms">Available on macOS and iOS, with your data synced between them.</p>
 
   <h2>Your data</h2>
   <p>
     Camp Budget accesses your account balances and transactions only to power
-    these features. Your financial data is never sold or shared for advertising.
-    See our <a href="privacy.html">Privacy Policy</a> for details.
+    these features. Your data is stored in a secure cloud backend (Google
+    Firebase) and the app's AI features are powered by Google's Gemini models.
+    Your financial data is never sold or shared for advertising. See our
+    <a href="privacy.html">Privacy Policy</a> for the full details of what is
+    collected, where it is stored, and how to delete it.
   </p>
 
   <div class="footer">
